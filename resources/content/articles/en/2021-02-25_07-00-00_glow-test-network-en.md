@@ -172,9 +172,9 @@ Max initial block [ Current block number is 36074 ]
 ```
 
 #### Alice will start
+``` shellsession
 One line command for other participants to generate the same agreement:
 
-``` shellsession
 $ glow start-interaction --agreement '{"glow-version":"Glow v0.1.0","interaction":"mukn/glow/dapps/buy_sig#payForSignature","participants":{"Buyer":"0x579E786dE324FC811839e9f6959C8d9EaCdEAa0c","Seller":"0x04F0B988FE46E83D74336e370E1f24B975019868"},"parameters":{"digest":"0x82082c8c9c193135a1ae6c9d8612682363ca34ba5ce87dd81d92e6e8a75c9dfe","price":"0x3ade68b1"},"reference":{},"options":{"blockchain":"Cardano EVM Devnet","timeoutInBlocks":"0x3e8","maxInitialBlock":"0x8d04"},"code-digest":"0x16c5659f6e3c70f0c53ac5abf3977e658093f1f5880bd478de8d3a87c92d9607"}'
 Executing code block begin0 ...
 (add-to-deposit price)
@@ -210,22 +210,23 @@ Enter number
 
 After setting up the interaction, the *Glow* runtime component will deploy an EVM smart contract to the configured network and generate a handshake to send to Bob. The handshake is for Bob to verify that the on-chain contract corresponds to everything that is specified in the agreement.
 
+``` shellsession
 Send the handshake below to the other participant:
 
-``` json
 {"agreement":{"glow-version":"Glow v0.1.0","interaction":"mukn/glow/dapps/buy_sig#payForSignature","participants":{"Buyer":"0x579E786dE324FC811839e9f6959C8d9EaCdEAa0c","Seller":"0x04F0B988FE46E83D74336e370E1f24B975019868"},"parameters":{"digest":"0x82082c8c9c193135a1ae6c9d8612682363ca34ba5ce87dd81d92e6e8a75c9dfe","price":"0x3ade68b1"},"reference":{},"options":{"blockchain":"Cardano EVM Devnet","timeoutInBlocks":"0x3e8","maxInitialBlock":"0x8d04"},"code-digest":"0x16c5659f6e3c70f0c53ac5abf3977e658093f1f5880bd478de8d3a87c92d9607"},"contract-config":{"contract-address":"0x5Cf4788Beb41B737bd86BFA34a013df05640c1Ce","code-hash":"0xb891d1c6c8b794c6b64094a16c3f6ed7b916602e42e8a05c6c4ad172fb0941a4","creation-hash":"0xe6fb35787bf51e9bc3cb255ef717791127724819db32ea835a4340d7b22d24e2","creation-block":"0x8ceb"},"published-data":"0x"}
-```
 
 Waiting for Seller to make a move ...
+```
 
-Alice sends Bob the handshake via email/messenger/etc
+
+#### Alice sends Bob the handshake via email/messenger/etc
 
 #### Bob captures the handshake
 
 All Bob has left to do is paste the handshake when prompted and the runtime will handle everything from there. First by generating a signature of the digest and then publishing it on-chain. Alice’s runtime will then watch the network for transactions against the contract to see Bob’s move, and both runtimes should run to completion without requiring any more user input.
 
 
-``` json
+``` shellsession
 {"agreement":{"glow-version":"Glow v0.1.0","interaction":"mukn/glow/dapps/buy_sig#payForSignature","participants":{"Buyer":"0x579E786dE324FC811839e9f6959C8d9EaCdEAa0c","Seller":"0x04F0B988FE46E83D74336e370E1f24B975019868"},"parameters":{"digest":"0x82082c8c9c193135a1ae6c9d8612682363ca34ba5ce87dd81d92e6e8a75c9dfe","price":"0x3ade68b1"},"reference":{},"options":{"blockchain":"Cardano EVM Devnet","timeoutInBlocks":"0x3e8","maxInitialBlock":"0x8d04"},"code-digest":"0x16c5659f6e3c70f0c53ac5abf3977e658093f1f5880bd478de8d3a87c92d9607"},"contract-config":{"contract-address":"0x5Cf4788Beb41B737bd86BFA34a013df05640c1Ce","code-hash":"0xb891d1c6c8b794c6b64094a16c3f6ed7b916602e42e8a05c6c4ad172fb0941a4","creation-hash":"0xe6fb35787bf51e9bc3cb255ef717791127724819db32ea835a4340d7b22d24e2","creation-block":"0x8ceb"},"published-data":"0x"}
 ```
 
